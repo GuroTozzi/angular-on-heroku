@@ -1,0 +1,18 @@
+<table class="table table-sm table-dark">
+  <caption>{{title}}</caption>
+  <tr>
+    <th>Nome</th>
+    <th>Cognome</th>
+    <th>Codice Fiscale</th>
+    <th>Email</th>
+    <th>Telefono</th>
+    <th>Provincia</th>
+    <th>Age</th>
+    <th>Action</th>
+  </tr>
+  <tr *ngFor ="let user of users" app-user [user-data] ="user"
+      (onDeleteUserEvent)="onDeleteUser($event)"
+      (onclickedRow)="showUserDetail($event)"
+  >
+  </tr>
+</table>

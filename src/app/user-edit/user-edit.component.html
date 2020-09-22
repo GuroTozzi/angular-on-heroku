@@ -1,0 +1,61 @@
+<form #f = "ngForm">
+  <div class="form-group" >
+    <label for="idUser">Id</label>
+    <input type="number" name="idUser" [(ngModel)]="user.idUser" id="idUser" class="form-control">
+  </div>
+  <div class="form-group">
+    <label for="firstname">First name</label>
+    <input #firstName="ngModel"
+           [(ngModel)]="user.name"
+           required
+           minlength="3"
+           name="firstname"
+           id="firstname"
+           class="form-control">
+  </div>
+  <div *ngIf="firstName.dirty && firstName.touched && firstName.invalid">
+    <div class="alert-danger" *ngIf="firstName.errors.required">
+      <label style="padding-left: 5px">Il nome è un campo obbligatorio</label>
+    </div>
+    <div class="alert-danger" *ngIf="firstName.errors.minlength">
+      <label style="padding-left: 5px">Il nome inserito è troppo corto</label>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="lastname">Last Name</label>
+    <input [(ngModel)]="user.lastname" name="lastname" id="lastname" class="form-control">
+  </div>
+  <div class="form-group">
+    <label for="fiscalcode">CF</label>
+    <input [(ngModel)]="user.fiscalcode" name="fiscalcode" id="fiscalcode" class="form-control">
+  </div>
+  <div class="form-group">
+    <label for="email">Email</label>
+    <input [(ngModel)]="user.email" type="email" name="email" id="email" class="form-control">
+  </div>
+  <div class="form-group">
+    <label for="tel">Tel.</label>
+    <input [(ngModel)]="user.phone" name="tel" id="tel" class="form-control">
+  </div>
+  <div class="form-group">
+    <label for="prov">Prov.</label>
+    <input [(ngModel)]="user.province" name="prov" id="prov" type="text" class="form-control">
+  </div>
+  <div class="form-group">
+    <label for="age">Age</label>
+    <input [(ngModel)]="user.age" type="number" name="age" id="age" class="form-control">
+  </div>
+  <div class="form-group form-footer" style="text-align: center">
+    <button style="margin-right: 10px"
+            class="btn btn-success"
+            [disabled]="f.form.invalid"
+            (click) = "updateUser()">
+      SAVE
+    </button>
+    <button  class="btn btn-dark" (click) = "resetUser(f.form)">RESET</button>
+    <!--<button  class="btn btn-dark" (click) = "callBackEnd()">TEST</button>-->
+    <!--{{stringTest | json}}-->
+  </div>
+</form>
+
